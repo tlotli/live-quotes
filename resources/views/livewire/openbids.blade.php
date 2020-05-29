@@ -1,6 +1,5 @@
 @extends('layouts.app_layouts.main_app')
 
-
 @section('main-section')
     <div class="row">
         <div class="col-lg-9">
@@ -38,8 +37,9 @@
                         <p class="text-muted">{{$q->specification}}</p>
                         <a href="" class="float-right text-muted"><i
                                 class="far fa-bookmark text-danger mr-1"></i>788</a>
-                        <a href="{{route('bid_detail' , ['id' => $q->id])}}" class="text-primary">View detail <i
-                                class="fas fa-long-arrow-alt-right"></i></a>
+{{--                        <a href="{{route('bid_detail' , ['id' => $q->id])}}" class="text-primary">View detail <i--}}
+{{--                                class="fas fa-long-arrow-alt-right"></i></a>--}}
+                            <a href="{{route('bid_detail' , ['id' => $q->id])}}" class="btn btn-info btn-sm">View detail   <i class="fas fa-long-arrow-alt-right"></i></a>
                     </div>
                 </div>
             @endforeach

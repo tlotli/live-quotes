@@ -105,7 +105,9 @@ class SubmitBid extends Component
             ->select(DB::raw('SUM(quote_items.price * quote_items.quantity) AS total_price'))
             ->first();
 
-        return view('livewire.submit-bid', compact('quote_item_count', 'quote_items', 'quote_item_sum'));
+        $bid_id = $this->quotation_request_id ;
+
+        return view('livewire.submit-bid', compact('quote_item_count', 'quote_items', 'quote_item_sum' , 'bid_id'));
     }
 
     public function delete($id) {

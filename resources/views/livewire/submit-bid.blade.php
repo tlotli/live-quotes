@@ -38,7 +38,7 @@
                                                                     class="text-danger"> *</span></label>
                                                             <input type="" value="{{old('price')}}"
                                                                    class="form-control @error('price') border-danger @enderror"
-                                                                   wire:model.lazy="price"  step="0.01" >
+                                                                   wire:model.lazy="price" step="0.01">
                                                             <div
                                                                 class="form-control-feedback text-danger">@error('price') {{$message}} @enderror</div>
                                                         </div>
@@ -110,7 +110,7 @@
                                                                     class="text-danger"> *</span></label>
                                                             <input type="" value="{{old('price')}}"
                                                                    class="form-control @error('price') border-danger @enderror"
-                                                                   wire:model.lazy="price"  step="0.01" >
+                                                                   wire:model.lazy="price" step="0.01">
                                                             <div
                                                                 class="form-control-feedback text-danger">@error('price') {{$message}} @enderror</div>
                                                         </div>
@@ -175,12 +175,14 @@
                                     <td>
                                         {{$q->quantity}}
                                     </td>
-                                    <td>{{$q->price}}</td>
-                                    <td>R{{$q->quantity * $q->price}}</td>
+                                    <td>R{{number_format($q->price , 2)}}</td>
+                                    <td>R{{number_format($q->quantity * $q->price, 2)}}</td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-success" wire:click="edit({{$q->id}})"><i class="fas fa-edit"></i>
+                                        <button type="button" class="btn btn-sm btn-success"
+                                                wire:click="edit({{$q->id}})"><i class="fas fa-edit"></i>
                                         </button>
-                                        <button type="button" class="btn btn-sm btn-danger" wire:click="delete({{$q->id}})"><i
+                                        <button type="button" class="btn btn-sm btn-danger"
+                                                wire:click="delete({{$q->id}})"><i
                                                 class="fas fa-trash-alt"></i>
                                         </button>
                                     </td>
@@ -202,13 +204,13 @@
 
                                 <div class="widget-body" style="color: #ffffff">
                                     <div class="header-title" style="color: #ffffff">Subtotal</div>
-                                    <h6 class="seling-data mb-1">R{{$quote_item_sum->total_price}}</h6>
+                                    <h6 class="seling-data mb-1">R{{number_format( $quote_item_sum->total_price, 2)}}</h6>
                                     <hr style="color:#ffffff;">
                                     <div class="header-title" style="color: #ffffff">Sales Tax (15%)</div>
-                                    <h6 class="seling-data mb-1">R{{($quote_item_sum->total_price) * 0.15 }}</h6>
+                                    <h6 class="seling-data mb-1">R{{ number_format( ($quote_item_sum->total_price * 0.15) , 2) }}</h6>
                                     <hr>
                                     <div class="header-title" style="color: #ffffff">Total</div>
-                                    <h6 class="seling-data mb-1">R{{($quote_item_sum->total_price) * 1.15 }}</h6>
+                                    <h6 class="seling-data mb-1">R{{ number_format(($quote_item_sum->total_price) * 1.15 , 2)  }}</h6>
                                 </div>
 
                             </div>
@@ -216,6 +218,9 @@
                     </div>
                 </div>
             </div>
+            <a href="{{route('preview_quote' , ['id' => $bid_id])}}" class="btn btn-warning btn-lg btn-block"><i class="mdi mdi-eye-circle-outline"></i>
+                Preview & Finalise Quote
+            </a>
         </div>
     </div>
 

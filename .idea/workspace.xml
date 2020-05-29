@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fa7f9435-3b15-41d0-acf1-318a39c6cc8c" name="Default Changelist" comment="" />
+    <list default="true" id="fa7f9435-3b15-41d0-acf1-318a39c6cc8c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BidDetail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/BidDetail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/SubmitBid.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/SubmitBid.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app_layouts/main_nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app_layouts/main_nav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bid-detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bid-detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/openbids.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/openbids.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/submit-bid.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/submit-bid.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +32,9 @@
         <option value="CSS File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -131,6 +146,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1bzaywfCGtMV1r00ilkyuVJeIFb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -138,6 +154,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -189,6 +206,13 @@
       <workItem from="1590047656696" duration="19143000" />
       <workItem from="1590124850957" duration="22032000" />
       <workItem from="1590221818375" duration="22867000" />
+      <workItem from="1590305404929" duration="15331000" />
+      <workItem from="1590342954423" duration="11615000" />
+      <workItem from="1590385558085" duration="294000" />
+      <workItem from="1590484941120" duration="30054000" />
+      <workItem from="1590561210222" duration="18415000" />
+      <workItem from="1590668256948" duration="23000" />
+      <workItem from="1590742500360" duration="807000" />
     </task>
     <servers />
   </component>
@@ -196,14 +220,23 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2472" y="178" key="#Illuminated_Cloud" timestamp="1589961872362">
+    <state x="2472" y="178" key="#Illuminated_Cloud" timestamp="1590385733934">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2472" y="178" key="#Illuminated_Cloud/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1589961872362" />
-    <state x="2610" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1590067830571">
+    <state x="2472" y="178" key="#Illuminated_Cloud/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590385733934" />
+    <state x="2472" y="178" key="#SQL_Dialects" timestamp="1590497254275">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2610" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590067830571" />
+    <state x="2472" y="178" key="#SQL_Dialects/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590497254275" />
+    <state x="2610" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1590525299568">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2610" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590525299568" />
+    <state x="552" y="217" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1590318860950" />
+    <state x="2660" y="274" key="FileChooserDialogImpl" timestamp="1590668282420">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2660" y="274" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590668282420" />
     <state width="1493" height="190" key="GridCell.Tab.0.bottom" timestamp="1589723848281">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -233,19 +266,19 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2381" y="162" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1589716617878" />
-    <state x="2475" y="298" key="com.intellij.ide.util.TipDialog" timestamp="1590305404123">
+    <state x="2475" y="298" key="com.intellij.ide.util.TipDialog" timestamp="1590668252489">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="444" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589790135773" />
-    <state x="2475" y="298" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590305404123" />
+    <state x="444" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1590342967022" />
+    <state x="2475" y="298" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590668252489" />
     <state x="444" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1589672746995" />
     <state x="2536" y="240" key="run.anything.popup" timestamp="1590251466342">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2536" y="240" key="run.anything.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590251466342" />
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1590059144007">
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1590742537313">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590059144007" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590742537313" />
   </component>
 </project>

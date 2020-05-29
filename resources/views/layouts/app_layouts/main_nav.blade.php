@@ -31,7 +31,7 @@
                             <li><a href="{{route('quotationrequests')}}">Request Quotation</a></li>
                             <li><a href="{{route('all_quotation_requests')}}">All Requests</a></li>
                             <li><a href="advanced-nestable.html">Overdue Requests</a></li>
-                            <li><a href="advanced-ratings.html">Request Submissions</a></li>
+                            <li><a href="{{route("request_submissions")}}">Request Submissions</a></li>
                         </ul>
                     </li>
 

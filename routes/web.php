@@ -28,6 +28,11 @@ Route::livewire('/business_profile' , 'business-profile')->name('business_profil
 Route::livewire('/bid_detail/{id}' , 'bid-detail')->name('bid_detail');
 Route::livewire('/company_profile/{id}' , 'social-page')->name('social_page');
 Route::livewire('/submit_bid/{id}' , 'submit-bid')->name('submit_bid');
+Route::livewire('/preview_quote/{id}' , 'preview-quote')->name('preview_quote');
+Route::livewire('/request_submissions' , 'request-submission')->name('request_submissions');
+Route::livewire('/submitted_quotation_request/{id}' , 'submitted-quotation-request')->name('submitted_quotation_request');
+Route::livewire('/quotation_detail/{id}/{business_profile_id}' , 'quote-detail')->name('quotation_detail');
+
 
 //Auth::routes();
 //
