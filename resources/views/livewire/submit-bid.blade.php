@@ -1,6 +1,8 @@
 @extends('layouts.app_layouts.main_app')
 
 @section('main-section')
+
+
     <div class="row">
         <div class="col-md-9">
             @if($updateMode == 0)
@@ -218,11 +220,20 @@
                     </div>
                 </div>
             </div>
-            <a href="{{route('preview_quote' , ['id' => $bid_id])}}" class="btn btn-warning btn-lg btn-block"><i class="mdi mdi-eye-circle-outline"></i>
-                Preview & Finalise Quote
-            </a>
+            @if($quote_item_count_items > 0)
+                <a href="{{route('preview_quote' , ['id' => $bid_id])}}" class="btn btn-warning btn-lg btn-block"><i class="mdi mdi-eye-circle-outline"></i>
+                    Preview & Finalise Quote
+                </a>
+           @endif
         </div>
     </div>
+
+
+    <script>
+        window.livewire.on('alert', param => {
+            toastr[param['type']](param['message']);
+        });
+    </script>
 
 @endsection
 

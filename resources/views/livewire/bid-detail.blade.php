@@ -15,9 +15,9 @@
                     {!! $bid->specification !!}
                     <hr>
                     <h5 class="text-muted">Targeted Sector</h5>
-                    <p>
+
                         {{$bid->business_sector->name}}
-                    </p>
+
                     <hr>
                     <h5 class="text-muted">Closing Date</h5>
                     <p>
@@ -33,10 +33,19 @@
 
         <div class="col-lg-3">
 
-            <div class="mb-3">
-                <a href="{{route("submit_bid" , ['id' => $bid->id])}}" class="btn btn-success btn-xl btn-block"><i class="mdi mdi-timer mr-2"></i> Apply For Bid
-                </a>
-            </div>
+            @if($check_bid_submission->quote_count < 1)
+                <div class="mb-3">
+                    <a href="{{route("submit_bid" , ['id' => $bid->id])}}" class="btn btn-success btn-xl btn-block"><i
+                            class="mdi mdi-timer mr-2"></i> Apply For Bid
+                    </a>
+                </div>
+            @else
+                <div class="mb-3">
+                    <a href="{{route("view_submitted_bid" , ['id' => $bid->id])}}" class="btn btn-warning btn-xl btn-block"><i
+                            class="mdi mdi-close-circle mr-2"></i> Bid Already Submitted
+                    </a>
+                </div>
+            @endif
 
             <div class="card">
                 <div class="card-body">
@@ -53,7 +62,9 @@
                             </a>
                         @endif
                         <div class="media-body ml-3 align-self-center">
-                            <a href="{{route("social_page" , ['id' => $bid->business_profile_id])}}"  class="font-14 mb-0" style="font-weight: bold; color: #0b0b0b">{{$bid->business_profile->company_name}}</a>
+                            <a href="{{route("social_page" , ['id' => $bid->business_profile_id])}}"
+                               class="font-14 mb-0"
+                               style="font-weight: bold; color: #0b0b0b">{{$bid->business_profile->company_name}}</a>
                         </div>
                     </div>
                 </div>

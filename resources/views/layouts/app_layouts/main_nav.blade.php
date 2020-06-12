@@ -20,58 +20,52 @@
                         <a href="#"><i class="mdi mdi-bank"></i>Open Bids</a>
                         <ul class="submenu">
                             <li><a href="{{route("openbids")}}">Browse For Bids</a></li>
-                            <li><a href="app-calendar.html">Drafts</a></li>
+                            <li><a href="{{route('draft_incomplete')}}">Drafts</a></li>
                             <li><a href="app-calendar.html">Booked Marked</a></li>
                         </ul>
                     </li>
 
                     <li class="has-submenu">
-                        <a href="#"><i class="mdi mdi-buffer"></i>Quotation Requests</a>
+                        <a href="#"><i class="mdi mdi-buffer"></i>Quotations</a>
+{{--                        <ul class="submenu">--}}
+{{--                            <li><a href="{{route('quotationrequests')}}">Request Quotation</a></li>--}}
+{{--                            <li><a href="{{route('all_quotation_requests')}}">Manage Quotation Requests</a></li>--}}
+{{--                            <li><a href="advanced-nestable.html">Overdue Requests</a></li>--}}
+{{--                            <li><a href="{{route("request_submissions")}}">View Request Submissions</a></li>--}}
+{{--                        </ul>--}}
+{{--                        --}}
+
                         <ul class="submenu">
-                            <li><a href="{{route('quotationrequests')}}">Request Quotation</a></li>
-                            <li><a href="{{route('all_quotation_requests')}}">All Requests</a></li>
-                            <li><a href="advanced-nestable.html">Overdue Requests</a></li>
-                            <li><a href="{{route("request_submissions")}}">Request Submissions</a></li>
+                            <li class="has-submenu">
+                                <a href="#">Quotation Requests</a>
+                                <ul class="submenu">
+                                    <li><a href="{{route('quotationrequests')}}">Request Quotation</a></li>
+                                    <li><a href="{{route('all_quotation_requests')}}">Manage Quotation Requests</a></li>
+                                    <li><a href="{{route("request_submissions")}}">View Request Submissions</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">Quotation Bids </a>
+                                <ul class="submenu">
+                                    <li><a href="{{route('view_bids')}}">View Bids</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
 
                     <li class="has-submenu">
-                        <a href="#"><i class="mdi mdi-cards-playing-outline"></i>UI Elements</a>
+                        <a href="#"><i class="mdi mdi-account-plus"></i>Contacts</a>
                         <ul class="submenu megamenu">
                             <li>
                                 <ul>
-                                    <li><a href="ui-alerts.html">Alerts</a></li>
+                                    <li><a href="{{route('companies')}}">View Contacts</a></li>
                                     <li><a href="ui-buttons.html">Buttons</a></li>
-                                    <li><a href="ui-cards.html">Cards</a></li>
-                                    <li><a href="ui-dropdowns.html">Dropdowns</a></li>
-                                    <li><a href="ui-modals.html">Modals</a></li>
-                                    <li><a href="ui-typography.html">Typography</a></li>
-                                    <li><a href="ui-progress.html">Progress</a></li>
-                                    <li><a href="ui-tabs-accordions.html">Tabs & Accordions</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li><a href="ui-tooltips-popovers.html">Tooltips & Popover</a></li>
-                                    <li><a href="ui-carousel.html">Carousel</a></li>
-                                    <li><a href="ui-pagination.html">Pagination</a></li>
-                                    <li><a href="ui-grid.html">Grid System</a></li>
-                                    <li><a href="ui-scrollspy.html">Scrollspy</a></li>
-                                    <li><a href="ui-spinners.html">Spinners</a></li>
-                                    <li><a href="ui-toasts.html">Toasts</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li><p class="font-12 mb-0 py-2 rounded-pill mt-2 badge badge-soft-success">Extra
-                                            Components</p></li>
-                                    <li><a href="ui-other-animation.html">Animation</a></li>
-                                    <li><a href="ui-other-avatar.html">Avatar</a></li>
-                                    <li><a href="ui-other-clipboard.html">Clip Board</a></li>
-                                    <li><a href="ui-other-files.html">File Meneger</a></li>
-                                    <li><a href="ui-other-ribbons.html">Ribbons</a></li>
-                                    <li><a href="ui-other-dragula.html">Dragula</a></li>
-                                    <li><a href="ui-other-check-radio.html">Check & Radio Buttons</a></li>
+{{--                                    <li><a href="ui-cards.html">Cards</a></li>--}}
+{{--                                    <li><a href="ui-dropdowns.html">Dropdowns</a></li>--}}
+{{--                                    <li><a href="ui-modals.html">Modals</a></li>--}}
+{{--                                    <li><a href="ui-typography.html">Typography</a></li>--}}
+{{--                                    <li><a href="ui-progress.html">Progress</a></li>--}}
+{{--                                    <li><a href="ui-tabs-accordions.html">Tabs & Accordions</a></li>--}}
                                 </ul>
                             </li>
                         </ul>

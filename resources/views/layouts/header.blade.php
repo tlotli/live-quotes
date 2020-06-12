@@ -9,4 +9,5 @@
 <link href="{{asset("assets/css/icons.css")}}" rel="stylesheet" type="text/css" />
 <link href="{{asset("assets/css/styling.min.css")}}" rel="stylesheet" type="text/css" />
 <link href="{{asset("assets/css/style.css")}}" rel="stylesheet" type="text/css" />
+<link href="{{asset("assets/css/toastr.css")}}" rel="stylesheet" type="text/css" />
 @yield("custom-styles")

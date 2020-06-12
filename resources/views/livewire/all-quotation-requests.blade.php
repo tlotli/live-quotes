@@ -53,27 +53,28 @@
                             <tbody>
                             @foreach($quotes as $q)
                                 <tr>
-                                <td>{{$loop->index + 1}}</td>
-                                <td>{{$q->title}}</td>
-                                <td>
-                                    @if($q->closing_date >= \Carbon\Carbon::today()->toDateString())
-                                        <span class="badge badge-success">{{$q->closing_date}}</span>
+                                    <td>{{$loop->index + 1}}</td>
+                                    <td>{{$q->title}}</td>
+                                    <td>
+                                        @if($q->closing_date >= \Carbon\Carbon::today()->toDateString())
+                                            <span class="badge badge-success">{{$q->closing_date}}</span>
                                         @else
-                                        <span class="badge badge-danger">{{$q->closing_date}}</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($q->status == 0)
-                                        <span class="badge badge-warning">Draft</span>
+                                            <span class="badge badge-danger">{{$q->closing_date}}</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($q->status == 0)
+                                            <span class="badge badge-warning">Draft</span>
                                         @else
-                                        <span class="badge badge-primary">Submitted For Bidding</span>
-                                    @endif
+                                            <span class="badge badge-primary">Submitted For Bidding</span>
+                                        @endif
 
-                                </td>
-                                <td>
-                                    <a href="{{route('update_quotation_request' , ['id' => $q->id])}}">edit</a>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-success btn-xs"
+                                           href="{{route('update_quotation_request' , ['id' => $q->id])}}"> <i class="fas fa-edit"></i> Edit</a>
+                                    </td>
+                                </tr>
                             @endforeach
                             </tbody>
                         </table>

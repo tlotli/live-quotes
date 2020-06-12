@@ -18,7 +18,6 @@ class BidDetail extends Component
 
     public function render()
     {
-
         $check_bid_submission = DB::table('quote_items')
                                 ->join('quotation_requests' , 'quotation_requests.id' , '=' , 'quote_items.quotation_request_id')
                                 ->where('quote_items.quotation_request_id' , $this->selectedId)
@@ -30,6 +29,7 @@ class BidDetail extends Component
 //        dd($check_bid_submission);
 
         $bid = \App\QuotationRequests::find($this->selectedId);
+
         return view('livewire.bid-detail', compact('bid' ,'check_bid_submission'));
     }
 }

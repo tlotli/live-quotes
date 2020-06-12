@@ -101,7 +101,6 @@ class SubmittedQuotationRequest extends Component
             ->groupBy('quote_items.business_profile_id')
             ->orderBy('quote_items.created_at', 'DESC')
             ->get();
-//        $this->resetInput();
 
         $quotation_request_id = $this->quotation_request_id;
 

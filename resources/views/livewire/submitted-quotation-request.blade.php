@@ -1,5 +1,9 @@
 @extends('layouts.app_layouts.main_app')
 
+@section('custom-scripts')
+    <script src="{{asset("assets/plugins/chartjs/chart.min.js")}}"></script>
+@endsection
+
 @section('main-section')
 
     <div class="row">
@@ -47,46 +51,15 @@
         </div>
     </div>
 
-    <div class="row mt-4">
 
-{{--        <div class="col-lg-3">--}}
-{{--            <div class="card">--}}
-{{--                <div class="card-body">--}}
-{{--                    <h4 class="mt-0 header-title">Filter Bids</h4>--}}
-{{--                    <form wire:submit.prevent="filter_bids">--}}
-{{--                        <div class="form-group ">--}}
-{{--                            <input type="text" class="form-control  @error('min') border-danger @enderror" name="min" value="{{old('min')}}" placeholder="Min"--}}
-{{--                                   wire:model.lazy="min">--}}
-{{--                            <div--}}
-{{--                                class="form-control-feedback text-danger">@error('min') {{$message}} @enderror</div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="form-group">--}}
-{{--                            <input type="text" class="form-control   @error('max') border-danger @enderror" placeholder="Max" value="{{old('max')}}" name="max"--}}
-{{--                                   wire:model.lazy="max">--}}
-{{--                            <div--}}
-{{--                                class="form-control-feedback text-danger">@error('max') {{$message}} @enderror</div>--}}
-{{--                        </div>--}}
-{{--                        <button type="submit" class="btn btn-primary btn-block btn-square waves-effect waves-light"><i--}}
-{{--                                class="mdi mdi-filter mr-2"></i>Filter--}}
-{{--                        </button>--}}
-{{--                    </form>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
+    <div class="row mt-4" x-data="{open : false}">
         @if($updateMode == 0 )
             <div class="col-lg-12">
                 <div class="mb-1">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        {{--                        <button type="button" class="btn btn-light" wire:click="$emit('filterByHighestBid' , {{$quotation_request_id}})"><i--}}
-                        {{--                                class="mdi mdi-arrow-up-thick"></i> Highest--}}
-                        {{--                        </button>--}}
-
                         <button type="button" class="btn btn-light" wire:click="highest"><i
                                 class="mdi mdi-arrow-up-thick"></i> Highest
                         </button>
-
                         <button type="button" class="btn btn-light" wire:click="lowest"><i
                                 class="mdi mdi-arrow-down-thick"></i> Lowest
                         </button>
@@ -109,28 +82,41 @@
                                          class="thumb-md rounded-circle">
                                 @endif
                             </a>
-                            <h5 class="my-1">{{$s->company_name}}</h5>
-                            <p class="text-muted mb-2">Mobile App</p>
+                            <h5 class="my-1" @click="open = !open"
+                                wire:click="$emit('view_company_info' , {{$s->business_profile_id}})">{{$s->company_name}}</h5>
+
+                            @foreach($average_bid as $m)
+                                @if($s->total_price < $m->average_bid )
+                                    <p class="mb-2 mt-2 text-muted text-truncate text-capitalize"><span
+                                            class="text-success"><i
+                                                class="mdi mdi-trending-down"></i> R{{ number_format( ($m->average_bid - $s->total_price) , 2)   }} </span>
+                                        Below average price</p>
+                                @elseif($s->total_price > $m->average_bid )
+                                    <p class="mb-2 mt-2 text-muted text-truncate text-capitalize"><span
+                                            class="text-danger"><i
+                                                class="mdi mdi-trending-up"></i> R{{ number_format( ($s->total_price - $m->average_bid  ) , 2)   }} </span>
+                                        Above average price</p>
+                                @else
+                                    <p class="mb-2 mt-2 text-muted text-truncate text-capitalize"><span
+                                            class="text-primary"><i
+                                                class="mdi mdi-trending-up"></i> R{{ number_format( ($s->total_price - $m->average_bid  ) , 2)   }} </span>
+                                        Same as average price</p>
+                                @endif
+                            @endforeach
+
                             <div class="row justify-content-center">
                                 <div class="col-12">
-                                    {{--                            <ul class="list-inline mb-0">--}}
-                                    {{--                                <li class="list-item d-inline-block mr-2">--}}
-                                    {{--                                    <a class="" href="#">--}}
-                                    {{--                                        <i class="mdi mdi-format-list-bulleted text-muted"></i>--}}
-                                    {{--                                        <span class="text-muted font-weight-bold">0/5</span>--}}
-                                    {{--                                    </a>--}}
-                                    {{--                                </li>--}}
-                                    {{--                                <li class="list-item d-inline-block">--}}
-                                    {{--                                    <a class="" href="#">--}}
-                                    {{--                                        <i class="mdi mdi-comment-outline text-muted"></i>--}}
-                                    {{--                                        <span class="text-muted font-weight-bold">3</span>--}}
-                                    {{--                                    </a>--}}
-                                    {{--                                </li>--}}
-                                    {{--                            </ul>--}}
+
                                     <a href="{{route('quotation_detail' ,['id' => $s->quotation_request_id ,
                                                                           'business_profile_id' => $s->business_profile_id
-                                                                         ])}}" class="btn btn-success btn-sm ">View Quote <i
+                                                                         ])}}" class="btn btn-success btn-xs ">View
+                                        Quote <i
                                             class="fas fa-long-arrow-alt-right"></i></a>
+
+                                    <button class="btn btn-primary btn-xs " @click="open = !open"
+                                            wire:click="$emit('view_company_info' , {{$s->business_profile_id}})">
+                                        Previous Quotes <i
+                                            class="fas fa-gavel"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -166,14 +152,39 @@
                                          class="thumb-md rounded-circle">
                                 @endif
                             </a>
-                            <h5 class="my-1">{{$s->company_name}}</h5>
-                            <p class="text-muted mb-2">Mobile App</p>
+                            <h5 class="my-1" @click="open = !open"
+                                wire:click="$emit('view_company_info' , {{$s->business_profile_id}})">{{$s->company_name}}</h5>
+
+                            @foreach($average_bid as $m)
+                                @if($s->total_price < $m->average_bid )
+                                    <p class="mb-2 mt-2 text-muted text-truncate text-capitalize"><span
+                                            class="text-success"><i
+                                                class="mdi mdi-trending-down"></i> R{{ number_format( ($m->average_bid - $s->total_price) , 2)   }} </span>
+                                        Below average price</p>
+                                @elseif($s->total_price > $m->average_bid )
+                                    <p class="mb-2 mt-2 text-muted text-truncate text-capitalize"><span
+                                            class="text-danger"><i
+                                                class="mdi mdi-trending-up"></i> R{{ number_format( ($s->total_price - $m->average_bid  ) , 2)   }} </span>
+                                        Above average price</p>
+                                @else
+                                    <p class="mb-2 mt-2 text-muted text-truncate text-capitalize"><span
+                                            class="text-primary"><i
+                                                class="mdi mdi-trending-up"></i> R{{ number_format( ($s->total_price - $m->average_bid  ) , 2)   }} </span>
+                                        Same as average price</p>
+                                @endif
+                            @endforeach
+
                             <div class="row justify-content-center">
                                 <div class="col-12">
                                     <a href="{{route('quotation_detail' ,['id' => $s->quotation_request_id ,
                                                                           'business_profile_id' => $s->business_profile_id
-                                                                         ])}}" class="btn btn-success btn-sm">View Quote <i
+                                                                         ])}}" class="btn btn-success btn-xs">View Quote
+                                        <i
                                             class="fas fa-long-arrow-alt-right"></i></a>
+                                    <button class="btn btn-primary btn-xs " @click="open = !open"
+                                            wire:click="$emit('view_company_info' , {{$s->business_profile_id}})">
+                                        Previous Quotes <i
+                                            class="fas fa-gavel"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -209,14 +220,39 @@
                                          class="thumb-md rounded-circle">
                                 @endif
                             </a>
-                            <h5 class="my-1">{{$s->company_name}}</h5>
-                            <p class="text-muted mb-2">Mobile App</p>
+                            <h5 class="my-1" @click="open = !open"
+                                wire:click="$emit('view_company_info' , {{$s->business_profile_id}})">{{$s->company_name}}</h5>
+
+                            @foreach($average_bid as $m)
+                                @if($s->total_price < $m->average_bid )
+                                    <p class="mb-2 mt-2 text-muted text-truncate text-capitalize"><span
+                                            class="text-success"><i
+                                                class="mdi mdi-trending-down"></i> R{{ number_format( ($m->average_bid - $s->total_price) , 2)   }} </span>
+                                        Below average price</p>
+                                @elseif($s->total_price > $m->average_bid )
+                                    <p class="mb-2 mt-2 text-muted text-truncate text-capitalize"><span
+                                            class="text-danger"><i
+                                                class="mdi mdi-trending-up"></i> R{{ number_format( ($s->total_price - $m->average_bid  ) , 2)   }} </span>
+                                        Above average price</p>
+                                @else
+                                    <p class="mb-2 mt-2 text-muted text-truncate text-capitalize"><span
+                                            class="text-primary"><i
+                                                class="mdi mdi-trending-up"></i> R{{ number_format( ($s->total_price - $m->average_bid  ) , 2)   }} </span>
+                                        Same as average price</p>
+                                @endif
+                            @endforeach
+
                             <div class="row justify-content-center">
                                 <div class="col-12">
                                     <a href="{{route('quotation_detail' ,['id' => $s->quotation_request_id ,
                                                                           'business_profile_id' => $s->business_profile_id
-                                                                         ])}}" class="btn btn-success btn-sm "  >View Quote <i
+                                                                         ])}}" class="btn btn-success btn-xs ">View
+                                        Quote <i
                                             class="fas fa-long-arrow-alt-right"></i></a>
+                                    <button class="btn btn-primary btn-xs " @click="open = !open"
+                                            wire:click="$emit('view_company_info' , {{$s->business_profile_id}})">
+                                        Previous Quotes <i
+                                            class="fas fa-gavel"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -231,8 +267,6 @@
                         <button type="button" class="btn btn-light" wire:click="remove_filter"> Remove Filter <i
                                 class="mdi mdi-alpha-x-circle"></i>
                         </button>
-                        {{--                        <button type="button" class="btn btn-success"  wire:click="lowest"><i class="mdi mdi-arrow-down-thick"></i> Lowest--}}
-                        {{--                        </button>--}}
                     </div>
                 </div>
                 @foreach($filtered_bid_submitted as $s)
@@ -258,7 +292,8 @@
                                 <div class="col-12">
                                     <a href="{{route('quotation_detail' ,['id' => $s->quotation_request_id,
                                                                           'business_profile_id' => $s->business_profile_id
-                                                                         ])}}" class="btn btn-success btn-sm ">View Quote <i
+                                                                         ])}}" class="btn btn-success btn-sm ">View
+                                        Quote <i
                                             class="fas fa-long-arrow-alt-right"></i></a>
                                 </div>
                             </div>
@@ -267,7 +302,9 @@
                 @endforeach
             </div>
         @endif
+        <livewire:bid-company-detail/>
     </div>
+
 @endsection
 
 

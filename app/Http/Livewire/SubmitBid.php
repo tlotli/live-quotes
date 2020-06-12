@@ -3,8 +3,10 @@
 namespace App\Http\Livewire;
 
 use App\QuoteItem;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class SubmitBid extends Component
@@ -23,7 +25,6 @@ class SubmitBid extends Component
         $this->price = "";
         $this->description = "";
     }
-
 
     public function submit()
     {
@@ -49,7 +50,10 @@ class SubmitBid extends Component
         $quote_item->save();
 
         $this->resetValidation();
-        $this->resetInput();
+        $this->resetInput();;
+
+//        $this->emit('alert', ['type' => 'success', 'message' => 'Item Added']);
+//        return redirect(route('submit_bid' ,['id' => $this->quotation_request_id]));
     }
 
     public function edit($id)
@@ -87,6 +91,8 @@ class SubmitBid extends Component
         $this->updateMode = 0;
         $this->resetValidation();
         $this->resetInput();
+
+//        $this->emit('alert', ['type' => 'success', 'message' => 'Item Updated']);
     }
 
     public function mount($id)
@@ -98,6 +104,7 @@ class SubmitBid extends Component
     {
         $quote_items = QuoteItem::where('quotation_request_id', $this->quotation_request_id)->where('business_profile_id', Auth::user()->business_profile_id)->get();
         $quote_item_count = QuoteItem::where('quotation_request_id', $this->quotation_request_id)->where('business_profile_id', Auth::user()->business_profile_id)->get();
+        $quote_item_count_items = QuoteItem::where('quotation_request_id', $this->quotation_request_id)->where('business_profile_id', Auth::user()->business_profile_id)->count();
 
         $quote_item_sum = DB::table('quote_items')
             ->where('quote_items.quotation_request_id', $this->quotation_request_id)
@@ -106,14 +113,14 @@ class SubmitBid extends Component
             ->first();
 
         $bid_id = $this->quotation_request_id ;
-
-        return view('livewire.submit-bid', compact('quote_item_count', 'quote_items', 'quote_item_sum' , 'bid_id'));
+        return view('livewire.submit-bid', compact('quote_item_count', 'quote_items', 'quote_item_sum' , 'bid_id' , 'quote_item_count' ,'quote_item_count_items'));
     }
 
     public function delete($id) {
         if($id) {
             QuoteItem::destroy($id);
             $this->updateMode = 0;
+//            $this->emit('alert', ['type' => 'success', 'message' => 'Item Removed']);
             $this->resetValidation();
             $this->resetInput();
         }
